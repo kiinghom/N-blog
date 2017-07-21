@@ -1,0 +1,29 @@
+<%- include('header') %>
+
+<div class="ui grid">
+	<div class="four wide column">
+			<a 	class="avator"
+				href="/posts?author=<%= post.author._id %>"
+				data-title="<%= post.author.name %> | <%= ({m: 'Male', f: 'Female', x: 'Secret'})[post.author.gender]%>"
+				data-content="<%= post.author.bio %>">
+				<img class="avator" src="/img/<%= post.author.avator %>" >
+			</a>
+	</div>
+
+	<div class="eight wide column">
+		<form class="ui form segment" method="post" action="/posts/<%= post._id %>/edit">
+			<div class="field required">
+				<label>Title</label>
+				<input type="text" name="title" value="<%= post.title %>">
+			</div>
+			<div class="field required">
+				<label>Content</label>
+				<textarea name="content" rows="15"><%= post.content %></textarea>
+			</div>
+			<input type="submit" value="Post" class="ui button">
+		</form>
+	</div>
+
+</div>
+
+<%- include('footer') %>
